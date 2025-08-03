@@ -1,3 +1,4 @@
+import { Route } from "react-router-dom";
 import App from "./App";
 import HomePage from "./components/HomePage";
 import Shopping from "./components/Shopping";
@@ -9,6 +10,7 @@ const routes = [
       {
         path: "/home",
         element: <HomePage />,
+
         default: true,
       },
       {

@@ -1,7 +1,11 @@
+import "../styles/shopping.css";
+
 function Shopping() {
   return (
     <>
-      <h1>Shopping</h1>
+      <section className="shop-container">
+        <h1>Shop</h1>
+      </section>
     </>
   );
 }

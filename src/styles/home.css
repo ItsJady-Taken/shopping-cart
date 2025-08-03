@@ -1,16 +1,55 @@
 .main-container {
   height: 100vh;
   display: flex;
+
   justify-content: space-evenly;
   align-items: center;
-  background: linear-gradient(60deg, #b4b3b3, #e0e0e0, #ffffff);
+  background: linear-gradient(
+    90deg,
+    rgb(240, 238, 230),
+    rgb(223, 222, 218),
+    #f1eee8
+  );
+}
+
+/* _____________________________ */
+
+/* title */
+.home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.home-title {
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #000;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transform: translateY(40px);
+}
+
+.home-description {
+  font-size: 1.5rem;
+  font-weight: 400;
+  font-style: italic;
+  text-align: center;
+  color: #000;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  transform: translateY(40px);
 }
 
 /* _____________________________ */
 
 /* images of clothes */
 
-section {
+.image-homepage {
   display: flex;
   gap: 20px;
 }
@@ -46,6 +85,7 @@ section {
   object-fit: cover;
   border-radius: 10px;
   transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   opacity: 0;
   transform: translateY(40px);
 }
@@ -54,8 +94,9 @@ section {
 
 /* button to shoppong page */
 .home-shop-button {
-  width: 200px;
-  height: 50px;
+  /* width: 200px;
+  height: 50px; */
+  padding: 10px 20px;
   border-radius: 10px;
   background-color: #000;
   color: #fff;
@@ -67,7 +108,7 @@ section {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   text-transform: uppercase;
   letter-spacing: 2px;
-  margin: 0 auto;
+  text-decoration: none;
   opacity: 0;
   transform: translateY(40px);
 }
@@ -78,10 +119,14 @@ section {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   transition: all 0.3s ease-in-out;
   text-decoration: none;
-  display: inline-block;
   margin: 0 auto;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
   text-align: center;
-  line-height: 50px;
 }
 
 .home-shop-button:active {
@@ -100,7 +145,9 @@ section {
   }
 }
 
+.home-title,
 .home-shop-button,
+.home-description,
 .image-homepage-box img,
 .image-homepage-box-2 img,
 .image-homepage-box-3 img {
