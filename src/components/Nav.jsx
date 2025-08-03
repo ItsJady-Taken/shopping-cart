@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "../styles/nav.css";
 
 function Nav() {
@@ -7,10 +8,10 @@ function Nav() {
         <h1>Logo</h1>
         <ul className="nav-list">
           <li>
-            <a href="#">Home</a>
+            <Link to={"./home"}>Home</Link>
           </li>
           <li>
-            <a href="#">About</a>
+            <Link to="./shop">Shop</Link>
           </li>
           <li>
             <a href="#">Contact</a>

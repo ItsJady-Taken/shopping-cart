@@ -1,4 +1,6 @@
+import { Outlet } from "react-router-dom";
 import "./App.css";
+import HomePage from "./components/HomePage";
 
 import Nav from "./components/Nav";
 
@@ -6,7 +8,7 @@ function App() {
   return (
     <>
       <Nav />
-      <h1>React</h1>
+      <Outlet />
     </>
   );
 }
