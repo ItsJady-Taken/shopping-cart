@@ -1,8 +1,11 @@
+import "../styles/nav.css";
+
 function Nav() {
   return (
     <>
-      <nav>
-        <ul>
+      <nav className="nav-container">
+        <h1>Logo</h1>
+        <ul className="nav-list">
           <li>
             <a href="#">Home</a>
           </li>
