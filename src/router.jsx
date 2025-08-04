@@ -1,4 +1,4 @@
-import { Route } from "react-router-dom";
+import { Navigate, Route } from "react-router-dom";
 import App from "./App";
 import HomePage from "./components/HomePage";
 import Shopping from "./components/Shopping";
@@ -8,10 +8,12 @@ const routes = [
     element: <App />,
     children: [
       {
+        index: true,
+        element: <Navigate to="/home" replace />,
+      },
+      {
         path: "/home",
         element: <HomePage />,
-
-        default: true,
       },
       {
         path: "/shop",

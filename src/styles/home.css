@@ -6,7 +6,7 @@
   align-items: center;
   background: linear-gradient(
     90deg,
-    rgb(240, 238, 230),
+    rgb(233, 229, 216),
     rgb(223, 222, 218),
     #f1eee8
   );
@@ -152,5 +152,5 @@
 .image-homepage-box-2 img,
 .image-homepage-box-3 img {
   animation: slideUp 0.8s ease-out forwards;
-  animation-delay: 1s;
+  animation-delay: 0.9s;
 }

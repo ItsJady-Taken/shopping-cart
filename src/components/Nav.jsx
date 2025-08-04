@@ -11,19 +11,20 @@ function Nav() {
         <ul className="nav-list">
           <li>
             <Link className="nav-link" to={"./home"}>
-              <i className="fa-solid fa-house"></i>
+              <i className="fa-solid fa-house fa-sm"></i>
               <span>Home</span>
             </Link>
           </li>
           <li>
             <Link className="nav-link" to="./shop">
-              <i class="fa-solid fa-cart-shopping"></i>
+              <i className="fa-solid fa-cart-shopping fa-sm"></i>
               <span>Shop</span>
             </Link>
           </li>
           <li>
             <a className="nav-link" href="#">
-              Contact
+              <i className="fa-solid fa-list-check"></i>
+              <span>Check Out</span>
             </a>
           </li>
         </ul>
