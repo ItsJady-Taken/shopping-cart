@@ -28,14 +28,16 @@ const routes = createMemoryRouter([
 ]);
 
 describe("App", () => {
-  it("Router is working", () => {
+  it("Should render the router provider correctly with the heading", () => {
     render(<RouterProvider router={routes} />);
     expect(screen.getByRole("heading").textContent).toMatch(
       "Welcome to our online store"
     );
   });
-  it("Nav is working", () => {
+  it("Should render the Nav with the list", () => {
     render(<RouterProvider router={routes} />);
     expect(screen.getByRole("list").textContent).toMatch("Home");
+    expect(screen.getByRole("list").textContent).toMatch("Shop");
+    expect(screen.getByRole("list").textContent).toMatch("Check Out");
   });
 });
