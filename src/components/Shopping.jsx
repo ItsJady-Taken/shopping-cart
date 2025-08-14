@@ -1,7 +1,7 @@
 import "../styles/shopping.css";
 
 import { useState, useEffect } from "react";
-import { ClothesCard } from "./BootstrapComp";
+import { ClothesCard } from "./PreBuildComp";
 
 function Shopping() {
   const [clothesData, setClothesData] = useState([]);
@@ -22,6 +22,8 @@ function Shopping() {
               image={clothes.image}
               title={clothes.title}
               price={clothes.price}
+              rates={clothes.rating.rate}
+              reviewCount={clothes.rating.count}
             />
           ))}
         </div>
