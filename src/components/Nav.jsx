@@ -24,7 +24,7 @@ function Nav() {
           <li>
             <a className="nav-link" href="#">
               <i className="fa-solid fa-list-check"></i>
-              <span>Check Out</span>
+              <span>Checkout</span>
             </a>
           </li>
         </ul>

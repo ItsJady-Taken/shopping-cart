@@ -24,12 +24,24 @@ function ClothesCard({ image, title, price, rates, reviewCount }) {
           <Card.Text>({reviewCount})</Card.Text>
         </Box>
 
-        <Card.Text style={{ fontWeight: "bold" }}>${price}</Card.Text>
-
+        <Card.Text style={{ fontWeight: "bold", fontSize: "20px" }}>
+          ${price}
+        </Card.Text>
+        {/* 
         <div className="card-button-container">
-          <Button variant="secondary">Buy Now</Button>
-          <Button variant="primary">Add to Cart</Button>
-        </div>
+          <Button
+            style={{ fontWeight: "bold", border: "1px solid black" }}
+            variant="light"
+          >
+            Buy Now
+          </Button>
+          <Button
+            style={{ fontWeight: "bold", border: "1px solid black" }}
+            variant="dark"
+          >
+            Add to Cart
+          </Button>
+        </div> */}
       </Card.Body>
     </Card>
   );
