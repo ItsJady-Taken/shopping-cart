@@ -1,6 +1,7 @@
 import { Outlet } from "react-router-dom";
 import "./App.css";
-import HomePage from "./components/HomePage";
+
+import "bootstrap/dist/css/bootstrap.min.css";
 
 import Nav from "./components/Nav";
 

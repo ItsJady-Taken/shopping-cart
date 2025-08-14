@@ -1,5 +1,8 @@
 import "../styles/shopping.css";
+
 import { useState, useEffect } from "react";
+import { ClothesCard } from "./BootstrapComp";
+
 function Shopping() {
   const [clothesData, setClothesData] = useState([]);
 
@@ -18,23 +21,12 @@ function Shopping() {
               key={clothes.id}
               image={clothes.image}
               title={clothes.title}
+              price={clothes.price}
             />
           ))}
         </div>
       </section>
     </>
-  );
-}
-
-function ClothesCard({ image, title }) {
-  return (
-    <div className="clothes-card">
-      <div className="clothes-card-img">
-        <img src={image} alt="clothes" />
-      </div>
-
-      <h3>{title}</h3>
-    </div>
   );
 }
 
@@ -52,7 +44,7 @@ async function getClothesData(count) {
     fetch(`https://fakestoreapi.com/products/${id}`).then((res) => res.json())
   );
   const data = await Promise.all(promises);
-
+  console.log(data);
   return data;
 }
 
