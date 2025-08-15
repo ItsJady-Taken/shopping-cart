@@ -60,6 +60,7 @@ function Shopping() {
               key={clothes.id}
               style={{ textDecoration: "none" }}
               to={`/product/${clothes.id}`}
+              state={clothes}
             >
               <ClothesCard
                 key={clothes.id}

@@ -64,7 +64,7 @@
 .card-img-top {
   width: 180px;
   height: 240px;
-  object-fit: fill;
+  object-fit: scale-down;
 }
 
 .card-title.h5 {
@@ -80,13 +80,6 @@
   white-space: wrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.card-button-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
 }
 
 @keyframes slideUp {
