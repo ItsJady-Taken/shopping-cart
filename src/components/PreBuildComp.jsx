@@ -1,4 +1,4 @@
-import Button from "react-bootstrap/Button";
+//import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { Rating, Box } from "@mui/material";
 
@@ -47,4 +47,40 @@ function ClothesCard({ image, title, price, rates, reviewCount }) {
   );
 }
 
-export { ClothesCard };
+function LoadingIcon() {
+  return (
+    <div
+      style={{
+        fontSize: "48px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        width: "100%",
+        height: "100vh",
+      }}
+    >
+      <i className="fa-solid fa-spinner fa-spin"></i>
+    </div>
+  );
+}
+
+function ErrorScreen() {
+  return (
+    <div
+      style={{
+        fontSize: "28px",
+        fontWeight: "bold",
+        wordSpacing: "10px",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        width: "100%",
+        height: "100vh",
+      }}
+    >
+      <p>Network Error</p>
+    </div>
+  );
+}
+
+export { ClothesCard, LoadingIcon, ErrorScreen };

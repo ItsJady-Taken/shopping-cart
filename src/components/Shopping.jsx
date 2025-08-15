@@ -3,16 +3,54 @@ import "../styles/shopping.css";
 import { Link, Outlet } from "react-router-dom";
 
 import { useState, useEffect } from "react";
-import { ClothesCard } from "./PreBuildComp";
+import { ClothesCard, ErrorScreen, LoadingIcon } from "./PreBuildComp";
 
-function Shopping() {
+function useClothesData() {
   const [clothesData, setClothesData] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
-    getClothesData().then((data) => {
-      setClothesData(data);
-    });
+    const clothesId = [1, 2, 3, 4, 5, 6, 15, 16, 17, 18, 19, 20];
+    clothesId.map((id) =>
+      fetch(`https://fakestoreapi.com/products/${id}`, { mode: "cors" })
+        .then((res) => {
+          if (!res.ok) {
+            return new Error("Network response was not ok");
+          } else {
+            return res.json();
+          }
+        })
+        .then((data) =>
+          setClothesData((pre) => {
+            const existing = pre.find((item) => item.id === data.id);
+            if (existing) {
+              return pre;
+            } else {
+              return [...pre, data];
+            }
+          })
+        )
+        .catch((error) => setError(error))
+        .finally(() => setLoading(false))
+    );
   }, []);
 
+  return { clothesData, error, loading };
+}
+function Shopping() {
+  const { clothesData, error, loading } = useClothesData();
+
+  if (error) {
+    return <ErrorScreen />;
+  }
+  if (loading) {
+    return (
+      <div>
+        {" "}
+        <LoadingIcon />{" "}
+      </div>
+    );
+  }
   return (
     <>
       <section className="shop-container">
@@ -38,24 +76,6 @@ function Shopping() {
       </section>
     </>
   );
-}
-
-async function getClothesData() {
-  const clothesCount = [1, 2, 3, 4, 5, 6, 15, 16, 17, 18, 19, 20];
-
-  // while (clothesCount.length < count) {
-  //   const clothesId = Math.floor(Math.random() * 20);
-  //   if (!clothesCount.includes(clothesId)) {
-  //     clothesCount.push(clothesId);
-  //   }
-  // }
-
-  const promises = clothesCount.map((id) =>
-    fetch(`https://fakestoreapi.com/products/${id}`).then((res) => res.json())
-  );
-  const data = await Promise.all(promises);
-  console.log(data);
-  return data;
 }
 
 export default Shopping;
