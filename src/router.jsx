@@ -4,6 +4,8 @@ import HomePage from "./components/HomePage";
 import Shopping from "./components/Shopping";
 import ErrorPage from "./components/ErrorPage";
 import ViewPage from "./components/ViewPage";
+import CheckoutPage from "./components/CheckoutPage";
+
 const routes = [
   {
     path: "/",
@@ -26,6 +28,7 @@ const routes = [
         path: "/product/:id",
         element: <ViewPage />,
       },
+      { path: "/checkout/:id", element: <CheckoutPage /> },
     ],
   },
 ];

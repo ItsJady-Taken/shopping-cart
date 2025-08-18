@@ -1,5 +1,5 @@
 import "../styles/viewPage.css";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 
 import { Button, ButtonGroup } from "react-bootstrap";
@@ -17,6 +17,9 @@ function ViewPage() {
     }
   }
   function onClickPlus() {
+    if (quantity > 100) {
+      return;
+    }
     setQuantity(quantity + 1);
   }
 
@@ -53,18 +56,31 @@ function ViewPage() {
           />
           {/* //buy / add to card */}
           <div style={{ display: "flex", gap: "10px" }}>
-            <Button
-              style={{ fontWeight: "bold", border: "1px solid black" }}
-              variant="light"
-            >
-              Buy Now
-            </Button>
-            <Button
-              style={{ fontWeight: "bold", border: "1px solid black" }}
-              variant="dark"
-            >
-              Add to Cart
-            </Button>
+            <Link style={{ width: "100%" }} to={`/checkout/${clothes.id}`}>
+              <Button
+                style={{
+                  width: "100%",
+                  fontWeight: "bold",
+                  border: "1px solid black",
+                }}
+                variant="light"
+              >
+                Buy Now
+              </Button>
+            </Link>
+
+            <Link style={{ width: "100%" }}>
+              <Button
+                style={{
+                  width: "100%",
+                  fontWeight: "bold",
+                  border: "1px solid black",
+                }}
+                variant="dark"
+              >
+                Add to Cart
+              </Button>
+            </Link>
           </div>
         </div>
 
