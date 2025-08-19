@@ -9,6 +9,7 @@ function useClothesData() {
   const [clothesData, setClothesData] = useState([]);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
+
   useEffect(() => {
     const clothesId = [1, 2, 3, 4, 5, 6, 15, 16, 17, 18, 19, 20];
     clothesId.map((id) =>

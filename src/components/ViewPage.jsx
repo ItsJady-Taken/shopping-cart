@@ -1,6 +1,6 @@
 import "../styles/viewPage.css";
 import { Link, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 
 import { Button, ButtonGroup } from "react-bootstrap";
 import { Rating, Box } from "@mui/material";
@@ -8,20 +8,31 @@ import { Rating, Box } from "@mui/material";
 function ViewPage() {
   const location = useLocation();
   const clothes = location.state;
+  const [isAdded, setIsAdded] = useState([clothes]);
 
   const [quantity, setQuantity] = useState(1);
 
-  function onClickMinus() {
+  // setIsAdded((item) => [...item, clothes]);
+
+  const onClickMinus = useCallback(() => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
+      setIsAdded((prevState) => {
+        const index = prevState.indexOf(clothes);
+        if (index !== -1) {
+          return [...prevState.slice(0, index), ...prevState.slice(index + 1)];
+        }
+        return prevState;
+      });
     }
-  }
-  function onClickPlus() {
+  }, [quantity, clothes]);
+  const onClickPlus = () => {
     if (quantity > 100) {
       return;
     }
     setQuantity(quantity + 1);
-  }
+    setIsAdded((item) => [...item, clothes]);
+  };
 
   return (
     <section className="view-container">
@@ -56,7 +67,7 @@ function ViewPage() {
           />
           {/* //buy / add to card */}
           <div style={{ display: "flex", gap: "10px" }}>
-            <Link style={{ width: "100%" }} to={`/checkout/${clothes.id}`}>
+            <Link style={{ width: "100%" }} to={`/checkout`} state={isAdded}>
               <Button
                 style={{
                   width: "100%",

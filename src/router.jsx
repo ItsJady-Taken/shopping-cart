@@ -28,7 +28,10 @@ const routes = [
         path: "/product/:id",
         element: <ViewPage />,
       },
-      { path: "/checkout/:id", element: <CheckoutPage /> },
+      {
+        path: "/checkout",
+        element: <CheckoutPage />,
+      },
     ],
   },
 ];
