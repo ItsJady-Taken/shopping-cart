@@ -12,8 +12,6 @@ function ViewPage() {
 
   const [quantity, setQuantity] = useState(1);
 
-  // setIsAdded((item) => [...item, clothes]);
-
   const onClickMinus = useCallback(() => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
@@ -67,7 +65,11 @@ function ViewPage() {
           />
           {/* //buy / add to card */}
           <div style={{ display: "flex", gap: "10px" }}>
-            <Link style={{ width: "100%" }} to={`/checkout`} state={isAdded}>
+            <Link
+              style={{ width: "100%" }}
+              to={`/checkout`}
+              state={{ isAdded, quantity }}
+            >
               <Button
                 style={{
                   width: "100%",
