@@ -15,8 +15,10 @@ function CheckoutPage() {
             {checkoutList.map((clothes) => (
               <div key={clothes[0].id} className="checkout-item-card">
                 <img src={clothes[0].image} alt={clothes[0].title} />
-                <h2>Hello{clothes[0].title}</h2>
-                <p>{clothes[0].price}</p>
+                <div>
+                  <h2>Hello{clothes[0].title}</h2>
+                  <p>{clothes[0].price}</p>
+                </div>
               </div>
             ))}
           </div>
