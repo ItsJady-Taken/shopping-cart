@@ -12,7 +12,6 @@
   grid-template-columns: 1fr 1fr;
   gap: 20px;
   justify-content: center;
-  align-items: center;
 }
 
 .checkout-item {
@@ -29,6 +28,7 @@
   padding: 20px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   border-radius: 5px;
+  width: 600px;
 }
 
 .checkout-item-card img {
@@ -41,13 +41,14 @@
   margin: 0;
   margin-left: 10px;
 
-  width: 500px;
+  width: 300px;
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
 .sumary-container {
+  gap: 20px;
   width: 400px;
   padding: 20px;
   border-left: 1px solid #ccc;
