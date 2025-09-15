@@ -65,7 +65,11 @@ function ViewPage() {
           />
           {/* //buy / add to card */}
           <div style={{ display: "flex", gap: "10px" }}>
-            <Link style={{ width: "100%" }} to={`/checkout`} state={isAdded}>
+            <Link
+              style={{ width: "100%" }}
+              to={`/checkout`}
+              state={{ clothesList: isAdded, amount: quantity }}
+            >
               <Button
                 style={{
                   width: "100%",
