@@ -7,9 +7,24 @@ import { Button, ButtonGroup } from "react-bootstrap";
 function CheckoutPage() {
   const location = useLocation();
   const { clothesList, amount } = location.state;
-  // const [checkoutList, setCheckoutList] = useState([clothesList]);
+  const [quantity, setQuantity] = useState(amount);
+
+  const onClickMinus = () => {
+    //quantity reducer
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+  const onClickPlus = () => {
+    // quantity increment
+    if (quantity > 100) {
+      return;
+    }
+    setQuantity((prev) => prev + 1);
+  };
+
   console.log(clothesList);
-  console.log(amount);
+
   return (
     <>
       <section className="checkout-container">
@@ -35,6 +50,7 @@ function CheckoutPage() {
                       <Button
                         style={{ fontWeight: "bold", fontSize: "18px" }}
                         variant="light"
+                        onClick={onClickMinus}
                       >
                         -
                       </Button>
@@ -43,16 +59,25 @@ function CheckoutPage() {
                         variant="light"
                         disabled
                       >
-                        {amount}
+                        {quantity}
                       </Button>
                       <Button
                         style={{ fontWeight: "bold", fontSize: "18px" }}
                         variant="light"
+                        onClick={onClickPlus}
                       >
                         +
                       </Button>
                     </ButtonGroup>
-                    <p>${clothesList[0].price}</p>
+                    <p
+                      style={{
+                        fontSize: "20px",
+                        letterSpacing: "1px",
+                        margin: "0px",
+                      }}
+                    >
+                      ${clothesList[0].price}
+                    </p>
                   </div>
                 </div>
                 <div
@@ -68,82 +93,28 @@ function CheckoutPage() {
                   X
                 </div>
               </div>
-              {/* {checkoutList.map((clothes) => (
-                <div
-                  key={clothes[0].id}
-                  className="checkout-item-card"
-                  style={{ position: "relative" }}
-                >
-                  <img src={clothes[0].image} alt={clothes[0].title} />
-
-                  <div className="checkout-item-info">
-                    <h4 style={{ fontWeight: "bold", marginBottom: "16px" }}>
-                      {clothes[0].title}
-                    </h4>
-                    <div className="checkout-item-quantity">
-                      <ButtonGroup
-                        aria-label="Basic example"
-                        style={{ border: "1px solid gray" }}
-                      >
-                        <Button
-                          style={{ fontWeight: "bold", fontSize: "18px" }}
-                          variant="light"
-                        >
-                          -
-                        </Button>
-                        <Button
-                          style={{ fontWeight: "bold", fontSize: "18px" }}
-                          variant="light"
-                          disabled
-                        >
-                          1
-                        </Button>
-                        <Button
-                          style={{ fontWeight: "bold", fontSize: "18px" }}
-                          variant="light"
-                        >
-                          +
-                        </Button>
-                      </ButtonGroup>
-                      <p>${clothes[0].price}</p>
-                    </div>
-                  </div>
-                  <div
-                    style={{
-                      position: "absolute",
-                      top: "10px",
-                      right: "10px",
-                      cursor: "pointer",
-                      fontWeight: "bold",
-                      fontSize: "20px",
-                    }}
-                  >
-                    X
-                  </div>
-                </div>
-              ))} */}
             </div>
           </div>
           <div className="sumary-container">
             <h3>Sumary</h3>
             <div className="summary-total-info" style={{ margin: "0" }}>
-              <p style={{ fontWeight: "bold" }}>Subtotal</p>
-              <p style={{ fontWeight: "bold" }}>${clothesList[0].price}</p>
+              <p style={{ fontWeight: "600px" }}>Subtotal</p>
+              <p style={{ fontWeight: "600px" }}>${clothesList[0].price}</p>
             </div>
             <div className="summary-total-info" style={{ margin: "0" }}>
-              <p style={{ fontWeight: "bold" }}>Shipping</p>
-              <p style={{ fontWeight: "bold" }}>Free</p>
+              <p style={{ fontWeight: "600px" }}>Shipping</p>
+              <p style={{ fontWeight: "600px" }}>Free</p>
             </div>
             <div className="summary-total-info" style={{ margin: "0" }}>
-              <p style={{ fontWeight: "bold" }}>Tax</p>
-              <p style={{ fontWeight: "bold" }}>$0.89</p>
+              <p style={{ fontWeight: "600px" }}>Tax</p>
+              <p style={{ fontWeight: "600px" }}>$0.89</p>
             </div>
             <div
               className="summary-total-info"
               style={{ borderTop: "1px solid gray", padding: "10px 0px" }}
             >
-              <h5 style={{ fontWeight: "bolder" }}>Total</h5>
-              <h5 style={{ fontWeight: "bolder" }}>${clothesList[0].price}</h5>
+              <h5 style={{ fontWeight: "bold" }}>Total</h5>
+              <h5 style={{ fontWeight: "bold" }}>${clothesList[0].price}</h5>
             </div>
             <div></div>
           </div>
