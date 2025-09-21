@@ -11,7 +11,6 @@ function ViewPage() {
   const [isAdded, setIsAdded] = useState([clothes]);
 
   const [quantity, setQuantity] = useState(1);
-
   const onClickMinus = useCallback(() => {
     if (quantity > 1) {
       setQuantity(quantity - 1);

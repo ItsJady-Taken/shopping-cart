@@ -8,7 +8,7 @@ function CheckoutPage() {
   const location = useLocation();
   const { clothesList, amount } = location.state;
   const [quantity, setQuantity] = useState(amount);
-
+  const [clothes, setClothes] = useState([clothesList[0]]);
   const onClickMinus = () => {
     //quantity reducer
     if (quantity > 1) {
@@ -21,9 +21,16 @@ function CheckoutPage() {
       return;
     }
     setQuantity((prev) => prev + 1);
+    setClothes((prevState) => {
+      const index = prevState.indexOf(clothes);
+      if (index !== -1) {
+        return [...prevState.slice(0, index), ...prevState.slice(index + 1)];
+      }
+      return prevState;
+    });
   };
 
-  console.log(clothesList);
+  console.log(clothes);
 
   return (
     <>
