@@ -9,6 +9,7 @@ function CheckoutPage() {
   const { clothesList, amount } = location.state;
   const [quantity, setQuantity] = useState(amount);
   const [clothes, setClothes] = useState([clothesList[0]]);
+
   const onClickMinus = () => {
     //quantity reducer
     if (quantity > 1) {

@@ -1,6 +1,9 @@
 import "../styles/sideMenu.css";
 
+import { useItemsContext } from "../App";
 export default function SideMenu({ toggleMenu }) {
+  const { items } = useItemsContext();
+  console.log(items);
   return (
     <div>
       {/* Side Menu */}

@@ -51,9 +51,7 @@ function Nav() {
       {isOpen && <div className="overlay-side-menu" onClick={toggleMenu}></div>}
       {/* Side menu */}
       <div className={`side-menu ${side} ${isOpen ? "open" : ""}`}>
-        {isOpen && (
-          <SideMenu toggleMenu={toggleMenu} isOpen={isOpen} side={side} />
-        )}
+        {isOpen && <SideMenu toggleMenu={toggleMenu} />}
       </div>
     </>
   );

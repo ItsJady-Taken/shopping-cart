@@ -2,14 +2,19 @@ import "../styles/viewPage.css";
 import { Link, useLocation } from "react-router-dom";
 import { useCallback, useState } from "react";
 
+import { useItemsContext } from "../App";
 import { Button, ButtonGroup } from "react-bootstrap";
 import { Rating, Box } from "@mui/material";
 
 function ViewPage() {
+  // Send clothes and quantity to shopping cart page
+  const { sendItems } = useItemsContext();
+  // Get the passed state using useLocation from shopping page
   const location = useLocation();
   const clothes = location.state;
   const [isAdded, setIsAdded] = useState([clothes]);
 
+  //quantity
   const [quantity, setQuantity] = useState(1);
   const onClickMinus = useCallback(() => {
     if (quantity > 1) {
@@ -81,18 +86,17 @@ function ViewPage() {
               </Button>
             </Link>
 
-            <Link style={{ width: "100%" }}>
-              <Button
-                style={{
-                  width: "100%",
-                  fontWeight: "bold",
-                  border: "1px solid black",
-                }}
-                variant="dark"
-              >
-                Add to Cart
-              </Button>
-            </Link>
+            <Button
+              style={{
+                width: "100%",
+                fontWeight: "bold",
+                border: "1px solid black",
+              }}
+              variant="dark"
+              onClick={() => sendItems(isAdded)}
+            >
+              Add to Cart
+            </Button>
           </div>
         </div>
 
