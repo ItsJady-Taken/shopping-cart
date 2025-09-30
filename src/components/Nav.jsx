@@ -3,9 +3,11 @@ import { useState } from "react";
 import "../styles/nav.css";
 import "../styles/sideMenu.css";
 
+import { useItemsContext } from "../App";
 import SideMenu from "./sideMenuPage";
 
 function Nav() {
+  const { items } = useItemsContext();
   const [isOpen, setIsOpen] = useState(false);
   const [side, setSide] = useState("right"); // State to track side menu position
 
@@ -34,6 +36,7 @@ function Nav() {
           </li>
           <li>
             <a
+              style={{ position: "relative" }}
               className="nav-link"
               href="#"
               onClick={(e) => {
@@ -43,6 +46,28 @@ function Nav() {
             >
               <i className="fa-solid fa-list-check"></i>
               <span>Checkout</span>
+              {/* Notification badge */}
+              {items.length > 0 && (
+                <span
+                  style={{
+                    position: "absolute",
+                    top: "-14px",
+                    right: "-18px",
+                    background: "black",
+                    color: "white",
+                    borderRadius: "50%",
+                    width: "20px", // ✅ fixed size
+                    height: "20px",
+                    display: "flex", // ✅ center the text
+                    alignItems: "center",
+                    justifyContent: "center",
+                    fontSize: "12px",
+                    fontWeight: "bold",
+                  }}
+                >
+                  {items.length}
+                </span>
+              )}
             </a>
           </li>
         </ul>
