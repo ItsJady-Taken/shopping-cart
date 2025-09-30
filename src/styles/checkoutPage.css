@@ -24,11 +24,12 @@
 .checkout-item-card {
   display: flex;
   align-items: center;
+  justify-content: space-around;
   gap: 10px;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  width: 600px;
+  width: 100%;
 }
 
 .checkout-item-card img {
@@ -63,11 +64,11 @@
 }
 
 .checkout-item-quantity {
-  width: 480px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 10px;
+  /* gap: 10px; */
 }
 
 .checkout-item-quantity p {
