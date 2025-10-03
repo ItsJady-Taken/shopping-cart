@@ -5,6 +5,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Nav from "./components/Nav";
+import Footer from "./components/Footer";
 
 const AppContext = createContext();
 
@@ -32,6 +33,7 @@ function App() {
       <AppProvider>
         <Nav />
         <Outlet />
+        <Footer />
       </AppProvider>
     </>
   );
