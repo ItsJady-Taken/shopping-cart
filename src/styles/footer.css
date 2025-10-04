@@ -2,7 +2,6 @@
   background: #111;
   color: #ddd;
   padding: 30px 20px;
-  margin-top: 40px;
 }
 
 .footer-container {
@@ -30,4 +29,13 @@
 .footer-links a:hover,
 .footer-socials a:hover {
   color: #1e90ff; /* nice blue hover */
+}
+
+.footer-left,
+.footer-links,
+.footer-socials {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }

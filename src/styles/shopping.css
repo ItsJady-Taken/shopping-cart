@@ -1,6 +1,7 @@
 .shop-container {
   width: 100%;
   height: auto;
+  padding-bottom: 40px;
   min-height: 100vh;
   display: flex;
   justify-content: center;
