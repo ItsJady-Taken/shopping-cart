@@ -16,7 +16,14 @@ export default function SideMenu({ toggleMenu }) {
       </div>
       <ul className="p-4 space-y-4">
         <li>
-          <a href="#">Home</a>
+          {items.length === 0 ? (
+            <p className="text-gray-500">No items in the cart</p>
+          ) : (
+            <div key={items[0].id} className="cart-item">
+              <span>{items[0].title}</span>
+              <span>${items[0].price.toFixed(2)}</span>
+            </div>
+          )}
         </li>
       </ul>
     </div>

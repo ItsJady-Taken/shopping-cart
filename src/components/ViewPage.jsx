@@ -12,28 +12,46 @@ function ViewPage() {
   // Get the passed state using useLocation from shopping page
   const location = useLocation();
   const clothes = location.state;
-  const [isAdded, setIsAdded] = useState([clothes]);
+  const [toCart, setToCart] = useState([clothes]);
 
   //quantity
   const [quantity, setQuantity] = useState(1);
   const onClickMinus = useCallback(() => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
-      setIsAdded((prevState) => {
-        const index = prevState.indexOf(clothes);
-        if (index !== -1) {
-          return [...prevState.slice(0, index), ...prevState.slice(index + 1)];
-        }
-        return prevState;
+      setToCart((prevCart) => {
+        // const index = prevState.indexOf(clothes);
+        // if (index !== -1) {
+        //   return [...prevState.slice(0, index), ...prevState.slice(index + 1)];
+        // }
+        // return prevState;
+        prevCart.map((item) =>
+          item.id === clothes.id
+            ? { ...item, quantity: item.quantity - 1 }
+            : item
+        );
       });
     }
   }, [quantity, clothes]);
   const onClickPlus = () => {
-    if (quantity > 100) {
-      return;
-    }
+    if (quantity > 100) return;
     setQuantity(quantity + 1);
-    setIsAdded((item) => [...item, clothes]);
+    setToCart((prevCart) => {
+      [...prevCart, clothes];
+      // const existingItem = prevCart.find((item) => item.id === clothes.id);
+
+      // if (existingItem) {
+      //   // Update quantity if already in cart
+      //   return prevCart.map((item) =>
+      //     item.id === clothes.id
+      //       ? { ...item, quantity: item.quantity + 1 }
+      //       : item
+      //   );
+      // } else {
+      //   // Add new item if not in cart
+      //   return [...prevCart, { ...clothes, quantity: 1 }];
+      // }
+    });
   };
 
   return (
@@ -72,7 +90,7 @@ function ViewPage() {
             <Link
               style={{ width: "100%" }}
               to={`/checkout`}
-              state={{ clothesList: isAdded, amount: quantity }}
+              state={{ clothesList: toCart, amount: quantity }}
             >
               <Button
                 style={{
@@ -93,7 +111,7 @@ function ViewPage() {
                 border: "1px solid black",
               }}
               variant="dark"
-              onClick={() => sendItems(isAdded)}
+              onClick={() => sendItems(toCart)}
             >
               Add to Cart
             </Button>
