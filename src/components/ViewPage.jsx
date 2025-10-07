@@ -8,50 +8,65 @@ import { Rating, Box } from "@mui/material";
 
 function ViewPage() {
   // Send clothes and quantity to shopping cart page
-  const { sendItems } = useItemsContext();
+  const { items, sendItems } = useItemsContext();
   // Get the passed state using useLocation from shopping page
   const location = useLocation();
   const clothes = location.state;
   const [toCart, setToCart] = useState([clothes]);
 
-  //quantity
-  const [quantity, setQuantity] = useState(1);
-  const onClickMinus = useCallback(() => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-      setToCart((prevCart) => {
-        // const index = prevState.indexOf(clothes);
-        // if (index !== -1) {
-        //   return [...prevState.slice(0, index), ...prevState.slice(index + 1)];
-        // }
-        // return prevState;
-        prevCart.map((item) =>
+  // Add to cart function
+  const handleAddToCart = () => {
+    // [..., clothes];
+    const existingItem = items.find((item) => item.id === clothes.id);
+
+    let updatedCart;
+
+    // Update quantity if already in cart
+    if (existingItem) {
+      // update quantity if already in cart
+      updatedCart = items.map((item) =>
+        item.id === clothes.id
+          ? { ...item, quantity: item.quantity + quantity }
+          : item
+      );
+    } else {
+      // Add new item if not in cart
+      updatedCart = [...items, { ...clothes, quantity }];
+    }
+
+    // send to context after updating
+
+    sendItems(updatedCart);
+    setToCart(updatedCart);
+    console.log(updatedCart);
+    return updatedCart;
+  };
+
+  const handleremoveFromCart = () => {
+    setToCart((prevCart) => {
+      const updatedCart = prevCart
+        .map((item) =>
           item.id === clothes.id
             ? { ...item, quantity: item.quantity - 1 }
             : item
-        );
-      });
+        )
+        .filter((item) => item.quantity > 0); // remove if 0
+      sendItems(updatedCart);
+      return updatedCart;
+    });
+  };
+
+  //quantity
+  const [quantity, setQuantity] = useState(1);
+  const onClickMinus = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+      // handleremoveFromCart();
     }
-  }, [quantity, clothes]);
+  };
   const onClickPlus = () => {
     if (quantity > 100) return;
     setQuantity(quantity + 1);
-    setToCart((prevCart) => {
-      [...prevCart, clothes];
-      // const existingItem = prevCart.find((item) => item.id === clothes.id);
-
-      // if (existingItem) {
-      //   // Update quantity if already in cart
-      //   return prevCart.map((item) =>
-      //     item.id === clothes.id
-      //       ? { ...item, quantity: item.quantity + 1 }
-      //       : item
-      //   );
-      // } else {
-      //   // Add new item if not in cart
-      //   return [...prevCart, { ...clothes, quantity: 1 }];
-      // }
-    });
   };
 
   return (
@@ -111,7 +126,7 @@ function ViewPage() {
                 border: "1px solid black",
               }}
               variant="dark"
-              onClick={() => sendItems(toCart)}
+              onClick={() => handleAddToCart()}
             >
               Add to Cart
             </Button>
