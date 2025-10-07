@@ -1,6 +1,6 @@
 import "../styles/viewPage.css";
 import { Link, useLocation } from "react-router-dom";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 
 import { useItemsContext } from "../App";
 import { Button, ButtonGroup } from "react-bootstrap";
@@ -42,19 +42,19 @@ function ViewPage() {
     return updatedCart;
   };
 
-  const handleremoveFromCart = () => {
-    setToCart((prevCart) => {
-      const updatedCart = prevCart
-        .map((item) =>
-          item.id === clothes.id
-            ? { ...item, quantity: item.quantity - 1 }
-            : item
-        )
-        .filter((item) => item.quantity > 0); // remove if 0
-      sendItems(updatedCart);
-      return updatedCart;
-    });
-  };
+  // const handleremoveFromCart = () => {
+  //   setToCart((prevCart) => {
+  //     const updatedCart = prevCart
+  //       .map((item) =>
+  //         item.id === clothes.id
+  //           ? { ...item, quantity: item.quantity - 1 }
+  //           : item
+  //       )
+  //       .filter((item) => item.quantity > 0); // remove if 0
+  //     sendItems(updatedCart);
+  //     return updatedCart;
+  //   });
+  // };
 
   //quantity
   const [quantity, setQuantity] = useState(1);

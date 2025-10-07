@@ -14,16 +14,27 @@ export default function SideMenu({ toggleMenu }) {
           X
         </button>
       </div>
-      <ul className="p-4 space-y-4">
+      <ul className="menu-list">
         <li>
           {items.length === 0 ? (
-            <p className="text-gray-500">No items in the cart</p>
+            <p
+              style={{
+                textAlign: "center",
+                letterSpacing: "1px",
+                fontSize: "18px",
+              }}
+            >
+              No items in the cart
+            </p>
           ) : (
             items.map((item) => (
               <div key={item.id} className="cart-item">
-                <span>{item.title}</span>
-                <span>${item.price}</span>
-                <span>Qty: {item.quantity}</span>
+                <img src={item.image} alt={item.title} />
+                <div className="cart-item-details">
+                  <span>{item.title}</span>
+                  <span>${item.price}</span>
+                  <span>Quantity: {item.quantity}</span>
+                </div>
               </div>
             ))
           )}
