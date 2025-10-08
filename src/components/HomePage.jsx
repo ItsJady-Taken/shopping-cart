@@ -2,6 +2,9 @@ import { Link } from "react-router-dom";
 
 import "../styles/home.css";
 
+import clothes from "../assets/clothes.jpg";
+import clothes2 from "../assets/clothes2.jpg";
+import clothes3 from "../assets/clothes3.jpg";
 function HomePage() {
   return (
     <main className="main-container">
@@ -15,16 +18,16 @@ function HomePage() {
 
       <section className="image-homepage">
         <div className="image-homepage-box">
-          <img src="../src/assets/clothes.jpg" alt="firt clothes image" />
+          <img src={clothes} alt="firt clothes image" />
         </div>
 
         <div style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
           <div className="image-homepage-box-2">
-            <img src="../src/assets/clothes2.jpg" alt="second clothes image" />
+            <img src={clothes2} alt="second clothes image" />
           </div>
 
           <div className="image-homepage-box-3">
-            <img src="../src/assets/clothes3.jpg" alt="third clothes image" />
+            <img src={clothes3} alt="third clothes image" />
           </div>
         </div>
       </section>

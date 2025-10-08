@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import "../styles/nav.css";
 import "../styles/sideMenu.css";
-
+import logo from "../assets/logo.png";
 import { useItemsContext } from "../App";
 import SideMenu from "./sideMenuPage";
 
@@ -19,7 +19,7 @@ function Nav() {
     <>
       <nav className="nav-container">
         <div className="nav-logo">
-          <img src="../src/assets/logo.png" alt="logo" />
+          <img src={logo} alt="Azdon Logo" />
         </div>
         <ul className="nav-list">
           <li>
