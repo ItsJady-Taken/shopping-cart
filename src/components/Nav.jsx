@@ -30,7 +30,8 @@ function Nav() {
           </li>
           <li>
             <Link className="nav-link" to="./shop">
-              <i className="fa-solid fa-cart-shopping fa-sm"></i>
+              <i class="fa-solid fa-bag-shopping"></i>
+
               <span>Shop</span>
             </Link>
           </li>
@@ -44,8 +45,8 @@ function Nav() {
                 setSide("right");
               }}
             >
-              <i className="fa-solid fa-list-check"></i>
-              <span>Checkout</span>
+              <i className="fa-solid fa-cart-shopping fa-sm"></i>
+              <span>Cart</span>
               {/* Notification badge */}
               {items.length > 0 && (
                 <span

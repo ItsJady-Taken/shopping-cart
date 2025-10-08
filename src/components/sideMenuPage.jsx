@@ -9,7 +9,16 @@ export default function SideMenu({ toggleMenu }) {
       {/* Side Menu */}
 
       <div className="menu-header">
-        <h2 style={{ margin: "0px", fontSize: "24px" }}>Shopping Cart</h2>
+        <h2
+          style={{
+            margin: "0px",
+            fontSize: "24px",
+            fontWeight: "600",
+            letterSpacing: "1px",
+          }}
+        >
+          <i class="fa-solid fa-list-ul"></i> Shopping Cart
+        </h2>
         <button onClick={toggleMenu} className="close-btn">
           X
         </button>
