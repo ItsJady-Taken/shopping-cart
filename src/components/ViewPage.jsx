@@ -9,18 +9,16 @@ import { Rating, Box } from "@mui/material";
 function ViewPage() {
   // Send clothes and quantity to shopping cart page
   const { items, sendItems } = useItemsContext();
+
   // Get the passed state using useLocation from shopping page
   const location = useLocation();
   const clothes = location.state;
-  const [toCart, setToCart] = useState([clothes]);
 
+  const [quantity, setQuantity] = useState(1);
   // Add to cart function
   const handleAddToCart = () => {
-    // [..., clothes];
     const existingItem = items.find((item) => item.id === clothes.id);
-
     let updatedCart;
-
     // Update quantity if already in cart
     if (existingItem) {
       // update quantity if already in cart
@@ -33,12 +31,8 @@ function ViewPage() {
       // Add new item if not in cart
       updatedCart = [...items, { ...clothes, quantity }];
     }
-
     // send to context after updating
-
     sendItems(updatedCart);
-    setToCart(updatedCart);
-    console.log(updatedCart);
     return updatedCart;
   };
 
@@ -57,7 +51,7 @@ function ViewPage() {
   // };
 
   //quantity
-  const [quantity, setQuantity] = useState(1);
+
   const onClickMinus = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
@@ -105,7 +99,8 @@ function ViewPage() {
             <Link
               style={{ width: "100%" }}
               to={`/checkout`}
-              state={{ clothesList: toCart, amount: quantity }}
+              // state={{ clothesList: items, amount: quantity }}
+              onClick={() => handleAddToCart()}
             >
               <Button
                 style={{

@@ -30,7 +30,7 @@ function Nav() {
           </li>
           <li>
             <Link className="nav-link" to="./shop">
-              <i class="fa-solid fa-bag-shopping"></i>
+              <i className="fa-solid fa-bag-shopping"></i>
 
               <span>Shop</span>
             </Link>

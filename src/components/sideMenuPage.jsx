@@ -17,7 +17,7 @@ export default function SideMenu({ toggleMenu }) {
             letterSpacing: "1px",
           }}
         >
-          <i class="fa-solid fa-list-ul"></i> Shopping Cart
+          <i className="fa-solid fa-list-ul"></i> Shopping Cart
         </h2>
         <button onClick={toggleMenu} className="close-btn">
           X
