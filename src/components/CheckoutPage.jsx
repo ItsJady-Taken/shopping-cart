@@ -11,6 +11,13 @@ function CheckoutPage() {
   const [quantity, setQuantity] = useState(1);
   const [clothes, setClothes] = useState([]);
 
+  const price = items.reduce(
+    (acc, item) => acc + item.price * item.quantity,
+    0
+  );
+  items.price = price.toFixed(2);
+  const tax = (items.price * 0.07).toFixed(2);
+  const total = (parseFloat(items.price) + parseFloat(tax)).toFixed(2);
   const onClickMinus = () => {
     //quantity reducer
     if (quantity > 1) {
@@ -32,8 +39,6 @@ function CheckoutPage() {
     });
   };
 
-  console.log(items.quantity);
-  console.log(items);
   return (
     <>
       <section className="checkout-container">
@@ -48,7 +53,7 @@ function CheckoutPage() {
                   fontStyle: "italic",
                 }}
               >
-                <i class="fa-solid fa-circle-exclamation"></i> No items have
+                <i className="fa-solid fa-circle-exclamation"></i> No items have
                 been added
               </h3>
             ) : (
@@ -128,7 +133,7 @@ function CheckoutPage() {
               <h3>Sumary</h3>
               <div className="summary-total-info" style={{ margin: "0" }}>
                 <p style={{ fontWeight: "600px" }}>Subtotal</p>
-                <p style={{ fontWeight: "600px" }}>${items.price}</p>
+                <p style={{ fontWeight: "600px" }}>${price}</p>
               </div>
               <div className="summary-total-info" style={{ margin: "0" }}>
                 <p style={{ fontWeight: "600px" }}>Shipping</p>
@@ -136,14 +141,14 @@ function CheckoutPage() {
               </div>
               <div className="summary-total-info" style={{ margin: "0" }}>
                 <p style={{ fontWeight: "600px" }}>Tax</p>
-                <p style={{ fontWeight: "600px" }}>$0.89</p>
+                <p style={{ fontWeight: "600px" }}>${tax}</p>
               </div>
               <div
                 className="summary-total-info"
                 style={{ borderTop: "1px solid gray", padding: "10px 0px" }}
               >
                 <h5 style={{ fontWeight: "bold" }}>Total</h5>
-                <h5 style={{ fontWeight: "bold" }}>${items.price}</h5>
+                <h5 style={{ fontWeight: "bold" }}>${total}</h5>
               </div>
               <div></div>
             </div>
