@@ -115,3 +115,34 @@
   color: #333;
   font-size: 13px;
 }
+
+.menu-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 16px;
+  border-top: 1px solid #ddd;
+  background: #f9f9f9;
+
+  display: flex;
+  justify-content: center;
+  align-self: center;
+}
+
+.menu-footer a {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  background: #000000;
+  color: rgb(255, 255, 255);
+  text-align: center;
+  text-decoration: none;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background 0.3s, transform 0.3s;
+}
+
+.menu-footer a:hover {
+  background: #ffffff;
+  color: #000000;
+}

@@ -1,5 +1,5 @@
 import "../styles/sideMenu.css";
-
+import { Link } from "react-router-dom";
 import { useItemsContext } from "../App";
 export default function SideMenu({ toggleMenu }) {
   const { items } = useItemsContext();
@@ -49,6 +49,11 @@ export default function SideMenu({ toggleMenu }) {
           )}
         </li>
       </ul>
+      <div className="menu-footer">
+        <Link className="menu-footer-btn" to={`/checkout`}>
+          Go to checkout
+        </Link>
+      </div>
     </div>
   );
 }

@@ -40,9 +40,17 @@ function CheckoutPage() {
         <div className="checkout-info">
           <div className="checkout-card">
             {items.length === 0 ? (
-              <h2 style={{ textAlign: "center", marginTop: "20px" }}>
-                No items have been added
-              </h2>
+              <h3
+                style={{
+                  textAlign: "right",
+                  marginTop: "20px",
+                  color: "gray",
+                  fontStyle: "italic",
+                }}
+              >
+                <i class="fa-solid fa-circle-exclamation"></i> No items have
+                been added
+              </h3>
             ) : (
               items.map((clothes) => (
                 <div key={clothes.id} className="checkout-card-items">
@@ -115,30 +123,31 @@ function CheckoutPage() {
               ))
             )}
           </div>
-
-          <div className="sumary-container">
-            <h3>Sumary</h3>
-            <div className="summary-total-info" style={{ margin: "0" }}>
-              <p style={{ fontWeight: "600px" }}>Subtotal</p>
-              <p style={{ fontWeight: "600px" }}>${items.price}</p>
+          {items.length !== 0 && (
+            <div className="sumary-container">
+              <h3>Sumary</h3>
+              <div className="summary-total-info" style={{ margin: "0" }}>
+                <p style={{ fontWeight: "600px" }}>Subtotal</p>
+                <p style={{ fontWeight: "600px" }}>${items.price}</p>
+              </div>
+              <div className="summary-total-info" style={{ margin: "0" }}>
+                <p style={{ fontWeight: "600px" }}>Shipping</p>
+                <p style={{ fontWeight: "600px" }}>Free</p>
+              </div>
+              <div className="summary-total-info" style={{ margin: "0" }}>
+                <p style={{ fontWeight: "600px" }}>Tax</p>
+                <p style={{ fontWeight: "600px" }}>$0.89</p>
+              </div>
+              <div
+                className="summary-total-info"
+                style={{ borderTop: "1px solid gray", padding: "10px 0px" }}
+              >
+                <h5 style={{ fontWeight: "bold" }}>Total</h5>
+                <h5 style={{ fontWeight: "bold" }}>${items.price}</h5>
+              </div>
+              <div></div>
             </div>
-            <div className="summary-total-info" style={{ margin: "0" }}>
-              <p style={{ fontWeight: "600px" }}>Shipping</p>
-              <p style={{ fontWeight: "600px" }}>Free</p>
-            </div>
-            <div className="summary-total-info" style={{ margin: "0" }}>
-              <p style={{ fontWeight: "600px" }}>Tax</p>
-              <p style={{ fontWeight: "600px" }}>$0.89</p>
-            </div>
-            <div
-              className="summary-total-info"
-              style={{ borderTop: "1px solid gray", padding: "10px 0px" }}
-            >
-              <h5 style={{ fontWeight: "bold" }}>Total</h5>
-              <h5 style={{ fontWeight: "bold" }}>${items.price}</h5>
-            </div>
-            <div></div>
-          </div>
+          )}
         </div>
       </section>
     </>
