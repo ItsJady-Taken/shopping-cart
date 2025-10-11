@@ -1,15 +1,13 @@
 import "../styles/checkoutPage.css";
 
 import { useItemsContext } from "../App";
-import { useState } from "react";
+//import { useState } from "react";
 import { Button, ButtonGroup } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function CheckoutPage() {
   const { items } = useItemsContext();
   // const location = useLocation();
-  // const { clothesList, amount } = location.state;
-  const [quantity, setQuantity] = useState(1);
-  const [clothes, setClothes] = useState([]);
 
   const price = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
@@ -18,26 +16,6 @@ function CheckoutPage() {
   items.price = price.toFixed(2);
   const tax = (items.price * 0.07).toFixed(2);
   const total = (parseFloat(items.price) + parseFloat(tax)).toFixed(2);
-  const onClickMinus = () => {
-    //quantity reducer
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    }
-  };
-  const onClickPlus = () => {
-    // quantity increment
-    if (quantity > 100) {
-      return;
-    }
-    setQuantity((prev) => prev + 1);
-    setClothes((prevState) => {
-      const index = prevState.indexOf(clothes);
-      if (index !== -1) {
-        return [...prevState.slice(0, index), ...prevState.slice(index + 1)];
-      }
-      return prevState;
-    });
-  };
 
   return (
     <>
@@ -64,8 +42,13 @@ function CheckoutPage() {
                       className="checkout-item-card"
                       style={{ position: "relative" }}
                     >
-                      <img src={clothes.image} alt={clothes.title} />
-
+                      <Link
+                        style={{ textDecoration: "none", color: "black" }}
+                        to={`/product/${clothes.id}`}
+                        state={clothes}
+                      >
+                        <img src={clothes.image} alt={clothes.title} />
+                      </Link>
                       <div className="checkout-item-info">
                         <h4
                           style={{ fontWeight: "bold", marginBottom: "16px" }}
@@ -73,37 +56,22 @@ function CheckoutPage() {
                           {clothes.title}
                         </h4>
                         <div className="checkout-item-quantity">
-                          <ButtonGroup
-                            aria-label="Basic example"
-                            style={{ border: "1px solid gray" }}
-                          >
-                            <Button
-                              style={{ fontWeight: "bold", fontSize: "18px" }}
-                              variant="light"
-                              onClick={onClickMinus}
-                            >
-                              -
-                            </Button>
-                            <Button
-                              style={{ fontWeight: "bold", fontSize: "18px" }}
-                              variant="light"
-                              disabled
-                            >
-                              {clothes.quantity}
-                            </Button>
-                            <Button
-                              style={{ fontWeight: "bold", fontSize: "18px" }}
-                              variant="light"
-                              onClick={onClickPlus}
-                            >
-                              +
-                            </Button>
-                          </ButtonGroup>
                           <p
                             style={{
-                              fontSize: "20px",
+                              fontSize: "18px",
                               letterSpacing: "1px",
                               margin: "0px",
+                              fontWeight: "light",
+                            }}
+                          >
+                            Order: {clothes.quantity}
+                          </p>
+                          <p
+                            style={{
+                              fontSize: "18px",
+                              letterSpacing: "1px",
+                              margin: "0px",
+                              fontWeight: "light",
                             }}
                           >
                             ${clothes.price}
@@ -150,7 +118,27 @@ function CheckoutPage() {
                 <h5 style={{ fontWeight: "bold" }}>Total</h5>
                 <h5 style={{ fontWeight: "bold" }}>${total}</h5>
               </div>
-              <div></div>
+              <div>
+                <ButtonGroup
+                  vertical
+                  style={{ width: "100%", gap: "10px" }}
+                  size="lg"
+                >
+                  <Button variant="dark" size="lg">
+                    <i className="fa-brands fa-cc-mastercard fa-lg"></i>{" "}
+                    <span style={{ fontWeight: "bold" }}>Credit Card</span>
+                  </Button>
+
+                  <Button variant="light" size="lg">
+                    <i className="fa-brands fa-cc-apple-pay fa-lg"></i>{" "}
+                    <span style={{ fontWeight: "bold" }}>Apple Pay</span>
+                  </Button>
+                  <Button variant="primary" size="lg">
+                    <i className="fa-brands fa-cc-paypal fa-lg"></i>{" "}
+                    <span style={{ fontWeight: "bold" }}>PayPal</span>
+                  </Button>
+                </ButtonGroup>
+              </div>
             </div>
           )}
         </div>
