@@ -6,9 +6,9 @@ import { Button, ButtonGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 function CheckoutPage() {
-  const { items } = useItemsContext();
-  // const location = useLocation();
+  const { items, sendItems } = useItemsContext();
 
+  // Calculate price, tax, and total
   const price = items.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
@@ -17,6 +17,20 @@ function CheckoutPage() {
   const tax = (items.price * 0.07).toFixed(2);
   const total = (parseFloat(items.price) + parseFloat(tax)).toFixed(2);
 
+  const removeItem = (clothes) => {
+    if (clothes.quantity > 1) {
+      const updatedItems = items.map((item) =>
+        item.id === clothes.id ? { ...item, quantity: item.quantity - 1 } : item
+      );
+      sendItems(updatedItems);
+    }
+  };
+  const addItems = (clothes) => {
+    const updatedItems = items.map((item) =>
+      item.id === clothes.id ? { ...item, quantity: item.quantity + 1 } : item
+    );
+    sendItems(updatedItems);
+  };
   return (
     <>
       <section className="checkout-container">
@@ -56,16 +70,36 @@ function CheckoutPage() {
                           {clothes.title}
                         </h4>
                         <div className="checkout-item-quantity">
-                          <p
+                          <ButtonGroup
+                            aria-label="Basic example"
                             style={{
-                              fontSize: "18px",
-                              letterSpacing: "1px",
-                              margin: "0px",
-                              fontWeight: "light",
+                              border: "1px solid gray",
                             }}
                           >
-                            Order: {clothes.quantity}
-                          </p>
+                            <Button
+                              style={{ fontWeight: "bold", fontSize: "18px" }}
+                              onClick={() => removeItem(clothes)}
+                              variant="light"
+                            >
+                              -
+                            </Button>
+                            <Button
+                              style={{ fontWeight: "bold", fontSize: "18px" }}
+                              variant="light"
+                              disabled
+                            >
+                              {clothes.quantity}
+                            </Button>
+                            <Button
+                              style={{ fontWeight: "bold", fontSize: "18px" }}
+                              onClick={() => addItems(clothes)}
+                              variant="light"
+                            >
+                              +
+                            </Button>
+                          </ButtonGroup>
+                        </div>
+                        <div className="checkout-item-price">
                           <p
                             style={{
                               fontSize: "18px",
@@ -87,6 +121,7 @@ function CheckoutPage() {
                           fontWeight: "bold",
                           fontSize: "20px",
                         }}
+                        onClick={() => removeItem(clothes.id)}
                       >
                         X
                       </div>

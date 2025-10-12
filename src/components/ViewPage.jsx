@@ -9,12 +9,16 @@ import { Rating, Box } from "@mui/material";
 function ViewPage() {
   // Send clothes and quantity to shopping cart page
   const { items, sendItems } = useItemsContext();
-
   // Get the passed state using useLocation from shopping page
   const location = useLocation();
   const clothes = location.state;
 
-  const [quantity, setQuantity] = useState(1);
+  const existingItem = items.find((item) => item.id === clothes.id);
+  const orderAmount = existingItem ? existingItem.quantity : 1;
+
+  console.log(orderAmount);
+
+  const [quantity, setQuantity] = useState(orderAmount);
   // Add to cart function
   const handleAddToCart = () => {
     const existingItem = items.find((item) => item.id === clothes.id);
@@ -135,7 +139,6 @@ function ViewPage() {
     </section>
   );
 }
-
 function QuantityButton({ quantity, onClickMinus, onClickPlus }) {
   return (
     <div>
@@ -171,5 +174,7 @@ function QuantityButton({ quantity, onClickMinus, onClickPlus }) {
     </div>
   );
 }
+
+export { QuantityButton };
 
 export default ViewPage;
