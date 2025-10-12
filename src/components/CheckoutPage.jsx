@@ -97,19 +97,19 @@ function CheckoutPage() {
                             >
                               +
                             </Button>
-                          </ButtonGroup>
-                        </div>
-                        <div className="checkout-item-price">
-                          <p
-                            style={{
-                              fontSize: "18px",
-                              letterSpacing: "1px",
-                              margin: "0px",
-                              fontWeight: "light",
-                            }}
-                          >
-                            ${clothes.price}
-                          </p>
+                          </ButtonGroup>{" "}
+                          <div className="checkout-item-price">
+                            <p
+                              style={{
+                                fontSize: "18px",
+                                letterSpacing: "1px",
+                                margin: "0px",
+                                fontWeight: "light",
+                              }}
+                            >
+                              ${clothes.price}
+                            </p>
+                          </div>
                         </div>
                       </div>
                       <div

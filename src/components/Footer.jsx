@@ -43,18 +43,63 @@ function Footer() {
         </div>
 
         <div className="footer-links">
-          <p style={{ margin: "0px", fontSize: "18px", letterSpacing: "1px" }}>
-            Contact
+          <p
+            style={{
+              textAlign: "center",
+              marginBottom: "10px",
+              fontSize: "18px",
+              letterSpacing: "1px",
+            }}
+          >
+            Contents
           </p>
-          <Link to={"./home"}>Home</Link>
-          <Link href="/services">Shop</Link>
-          <Link href="/contact">Contact</Link>
+          <Link
+            style={{
+              marginBottom: "8px",
+              fontSize: "14px",
+              letterSpacing: "1px",
+              textAlign: "center",
+            }}
+            to={"./home"}
+          >
+            Home
+          </Link>
+          <Link
+            style={{
+              marginBottom: "8px",
+              fontSize: "14px",
+              letterSpacing: "1px",
+              textAlign: "center",
+            }}
+            to="/shop"
+          >
+            Shop
+          </Link>
         </div>
-
         <div className="footer-socials">
-          <a href="https://twitter.com">🐦</a>
-          <a href="https://facebook.com">📘</a>
-          <a href="https://instagram.com">📸</a>
+          <p
+            style={{
+              textAlign: "center",
+              marginBottom: "10px",
+              fontSize: "18px",
+              letterSpacing: "1px",
+            }}
+          >
+            Follow me
+          </p>
+          <a
+            style={{
+              height: "50px",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+            href="https://github.com/ItsJady-Taken"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <i class="fa-brands fa-square-github fa-2xl"></i>
+          </a>
         </div>
       </div>
     </footer>
