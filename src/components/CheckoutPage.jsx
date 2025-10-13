@@ -17,6 +17,11 @@ function CheckoutPage() {
   const tax = (items.price * 0.07).toFixed(2);
   const total = (parseFloat(items.price) + parseFloat(tax)).toFixed(2);
 
+  const deleteItem = (clothes) => {
+    const updatedItems = items.filter((item) => item.id !== clothes.id);
+    sendItems(updatedItems);
+  };
+
   const removeItem = (clothes) => {
     if (clothes.quantity > 1) {
       const updatedItems = items.map((item) =>
@@ -121,7 +126,7 @@ function CheckoutPage() {
                           fontWeight: "bold",
                           fontSize: "20px",
                         }}
-                        onClick={() => removeItem(clothes.id)}
+                        onClick={() => deleteItem(clothes)}
                       >
                         X
                       </div>

@@ -4,7 +4,10 @@ import "../styles/footer.css";
 function Footer() {
   return (
     <footer className="footer">
-      <div className="footer-container">
+      <div
+        style={{ borderBottom: "1px solid grey" }}
+        className="footer-container"
+      >
         <div className="footer-left">
           <p style={{ margin: "0px", fontSize: "18px", letterSpacing: "1px" }}>
             Address
@@ -39,7 +42,6 @@ function Footer() {
           >
             Email: 8XHb9@example.com
           </p>
-          <p>© {new Date().getFullYear()} All rights reserved.</p>
         </div>
 
         <div className="footer-links">
@@ -98,8 +100,28 @@ function Footer() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <i class="fa-brands fa-square-github fa-2xl"></i>
+            <i className="fa-brands fa-square-github fa-2xl"></i>
           </a>
+        </div>
+      </div>
+      <div className="footer-bottom">
+        <p style={{ letterSpacing: "2px" }}>
+          © {new Date().getFullYear()} All rights reserved.
+        </p>
+        <div className="footer-credit">
+          <p style={{ letterSpacing: "1px" }}>
+            Powered by{" "}
+            <a
+              href="https://reactjs.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              React Vite
+            </a>
+          </p>
+          <p style={{ letterSpacing: "1px" }}>
+            Made with <i className="fa-solid fa-heart"></i> by Jady Taken
+          </p>
         </div>
       </div>
     </footer>

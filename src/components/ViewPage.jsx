@@ -16,8 +16,6 @@ function ViewPage() {
   const existingItem = items.find((item) => item.id === clothes.id);
   const orderAmount = existingItem ? existingItem.quantity : 1;
 
-  console.log(orderAmount);
-
   const [quantity, setQuantity] = useState(orderAmount);
   // Add to cart function
   const handleAddToCart = () => {
@@ -39,22 +37,6 @@ function ViewPage() {
     sendItems(updatedCart);
     return updatedCart;
   };
-
-  // const handleremoveFromCart = () => {
-  //   setToCart((prevCart) => {
-  //     const updatedCart = prevCart
-  //       .map((item) =>
-  //         item.id === clothes.id
-  //           ? { ...item, quantity: item.quantity - 1 }
-  //           : item
-  //       )
-  //       .filter((item) => item.quantity > 0); // remove if 0
-  //     sendItems(updatedCart);
-  //     return updatedCart;
-  //   });
-  // };
-
-  //quantity
 
   const onClickMinus = () => {
     if (quantity > 1) {
